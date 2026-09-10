@@ -1,28 +1,23 @@
 # Case Investigation: Ronin Bridge / Axie Infinity / Lazarus Group Ethereum Investigation
 
-**Class Assignment No. 2**
-**Submitted by:** Awais Ahmed (Sp-23/BS DFCS/008)
+*Written analysis of a publicly documented blockchain incident, based on published investigative sources and blockchain records.*
 
-## 1. Case Title
+## 1. Investigation Objective
 
-Ronin Bridge / Axie Infinity / Lazarus Group Ethereum Investigation
+I analyzed Ethereum blockchain activity related to the Ronin Bridge exploit, examined smart contract interactions, reviewed major transactions involving ETH and USDC, verified sanctions information, and documented the limitations of public blockchain evidence.
 
-## 2. Investigation Objective
-
-The objective of this investigation is to analyze Ethereum blockchain activity related to the Ronin Bridge exploit, examine smart contract interactions, identify major transactions involving ETH and USDC, verify sanctions listings, and understand the limitations of public blockchain evidence.
-
-## 3. Tools and Resources Used
+## 2. Tools and Resources Used
 
 - Ronin Network Postmortem
 - Etherscan Blockchain Explorer
 - OFAC Sanctions Page
 - U.S. Treasury Tornado Cash Release
 
-## 4. Verified Case Facts (Summary)
+## 3. Verified Case Facts
 
-The Ronin Bridge exploit occurred on 23 March 2022 and was discovered on 29 March 2022. The attacker drained 173,600 ETH and 25.5 million USDC. The attack was executed by compromising five out of nine validator private keys, allowing forged withdrawal approvals. The exploit was carried out in two major transactions. The address involved is publicly labeled as the Ronin Bridge Exploiter and is sanctioned by OFAC under the Lazarus Group.
+The Ronin Bridge exploit occurred on 23 March 2022 and was discovered on 29 March 2022. The attacker drained 173,600 ETH and 25.5 million USDC. The attack was executed by compromising five of nine validator private keys, allowing forged withdrawal approvals. The exploit was carried out in two major transactions. The address involved is publicly labeled as the Ronin Bridge Exploiter and is sanctioned by OFAC under the Lazarus Group.
 
-## 5. Case Facts Table
+## 4. Case Facts
 
 | Fact | Source | Relevance |
 |---|---|---|
@@ -33,7 +28,7 @@ The Ronin Bridge exploit occurred on 23 March 2022 and was discovered on 29 Marc
 | 5/9 validators compromised | Ronin Postmortem | Attack method |
 | 2 transactions used | Ronin Postmortem | Execution |
 
-## 6. Address Investigated
+## 5. Address Investigated
 
 **Address:** `0x098B716B8Aaf21512996dC57EB0615e2383E2f96`
 
@@ -41,13 +36,13 @@ The Ronin Bridge exploit occurred on 23 March 2022 and was discovered on 29 Marc
 - Category: Exploit
 - Sanctions: OFAC-Sanctioned
 
-The address and its label were verified on Etherscan (see Figure 1).
+I verified the address and its public label on Etherscan (see Figure 1).
 
-## 7. Why Current Balance Is Not Reliable
+## 6. Why Current Balance Is Not Reliable
 
-The current balance of an Ethereum address can change over time due to further transactions. Therefore, it does not represent the original stolen amount, and investigators must rely on historical transaction data.
+The current balance of an Ethereum address can change over time due to subsequent transactions. It therefore does not represent the original stolen amount. For an investigation, historical transaction data is more useful than the current balance alone.
 
-## 8. ETH Transaction Analysis (173,600 ETH)
+## 7. ETH Transaction Analysis (173,600 ETH)
 
 | Field | Details |
 |---|---|
@@ -61,11 +56,11 @@ The current balance of an Ethereum address can change over time due to further t
 | Value Field | 0 ETH |
 | Fee | 0.019899 ETH |
 
-**Explanation:** this is not a normal transfer. It is a smart contract interaction, where ETH movement appears in internal transactions, not in the main value field. This indicates interaction with a smart contract rather than a direct wallet-to-wallet transfer.
+**Explanation:** this is not a normal direct transfer. It is a smart contract interaction in which the ETH movement appears in internal transactions rather than the main value field. This is why Ethereum investigations require more than checking the top-level transaction value.
 
 The internal transfer of 173,600 ETH is visible on Etherscan (see Figure 2).
 
-## 9. USDC Transaction Analysis (25,500,000 USDC)
+## 8. USDC Transaction Analysis (25,500,000 USDC)
 
 | Field | Details |
 |---|---|
@@ -79,13 +74,13 @@ The internal transfer of 173,600 ETH is visible on Etherscan (see Figure 2).
 | Value Field | 0 ETH |
 | Fee | 0.0219782 ETH |
 
-The ERC-20 transfer of 25,500,000 USDC is shown (see Figure 3).
+The ERC-20 transfer of 25,500,000 USDC is shown in the token transfer data (see Figure 3).
 
-## 10. Comparison (ETH vs. USDC)
+## 9. ETH vs. USDC
 
-The ETH transaction shows asset movement through internal transactions, while the USDC transfer appears under ERC-20 token transfers. Both transactions show 0 ETH in the value field, demonstrating that Ethereum investigations require deeper analysis beyond basic transaction values.
+The ETH transaction shows asset movement through internal transactions, while the USDC transfer appears under ERC-20 token transfers. Both transactions show 0 ETH in the top-level value field. This demonstrates why blockchain investigations require examination of contract calls, internal transactions, and token transfers rather than relying on a single transaction field.
 
-## 11. OFAC Sanctions Verification
+## 10. OFAC Sanctions Verification
 
 | Field | Entry |
 |---|---|
@@ -97,30 +92,30 @@ The ETH transaction shows asset movement through internal transactions, while th
 
 The address is listed under sanctions (see Figure 4).
 
-## 12. Tornado Cash (Mixer Explanation)
+## 11. Tornado Cash
 
-A cryptocurrency mixer like Tornado Cash obscures transaction origins by pooling and redistributing funds. This makes tracing difficult but does not erase previous blockchain records, meaning earlier transactions remain visible for forensic analysis.
+A cryptocurrency mixer such as Tornado Cash can make tracing funds more difficult by pooling and redistributing them. It does not erase historical blockchain records, so earlier transactions remain available for analysis.
 
-## 13. Transaction Evidence Table
+## 12. Transaction Evidence
 
 | Date | Hash | Asset | Amount | From | To | Source |
-|---|---|---|---|---|---|---|
+|---|---|---|---:|---|---|---|
 | 23 Mar 2022 | `c28f...` | ETH | 173,600 | Exploiter | Ronin Bridge | Etherscan |
 | 23 Mar 2022 | `ed2c...` | USDC | 25,500,000 | Exploiter | Ronin Bridge | Etherscan |
 
-## 14. Fund Flow Diagrams
+## 13. Fund Flow
 
 **ETH Flow:**
-```
+```text
 Compromised Validators → Forged Approval → Ronin Bridge → 173,600 ETH → Exploiter Address
 ```
 
 **USDC Flow:**
-```
+```text
 Compromised Validators → Forged Approval → Ronin Bridge → 25.5M USDC → Exploiter Address
 ```
 
-## 15. Confirmed Facts
+## 14. Confirmed Facts
 
 | Fact | Source |
 |---|---|
@@ -130,22 +125,19 @@ Compromised Validators → Forged Approval → Ronin Bridge → 25.5M USDC → E
 | Address labeled exploiter | Etherscan |
 | Address linked to Lazarus | OFAC |
 
-## 16. Limitations
+## 15. Limitations
 
-| Overclaim | Reality |
+| Potential Overclaim | What the Evidence Supports |
 |---|---|
-| Identity proven | Not from blockchain alone |
-| Value field shows theft | Must check internal/ERC20 |
-| Current balance shows loss | Not reliable |
-| Mixers remove traces | Only obscure |
+| Identity proven | Not from blockchain evidence alone |
+| Value field shows theft | Internal/ERC-20 data must also be examined |
+| Current balance shows original loss | Current balance is not sufficient |
+| Mixers remove transaction history | Mixers can obscure fund flows but do not erase earlier records |
 
-## 17. Conclusion
+## 16. Conclusion
 
-The Ronin Bridge exploit demonstrates how smart contract vulnerabilities can be exploited to drain large amounts of cryptocurrency. Public blockchain data confirms the transaction flow and amounts stolen, while OFAC provides attribution to Lazarus Group. However, blockchain evidence alone cannot independently verify real-world identity.
+I found that the Ronin Bridge case is a good example of why blockchain investigations require more than basic wallet balances and transaction values. Public blockchain data shows the relevant asset movements, while OFAC and the Ronin postmortem provide additional attribution and incident context. At the same time, blockchain evidence alone cannot independently establish a real-world identity.
 
-## 18. Screenshots Annexure
+## 17. Screenshots
 
 *All screenshots were accessed on 6 May 2026 (UTC).*
-
----
-*Source: Awais Ahmed's own class assignment, Investigating Cryptocurrencies module.*
