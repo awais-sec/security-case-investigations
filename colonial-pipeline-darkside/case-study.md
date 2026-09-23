@@ -25,6 +25,10 @@ I verified the subject address using a blockchain explorer (see Figure 1).
 
 **Source:** Elliptic analysis
 
+![Figure 1: Subject Bitcoin address page on Blockchair](images/figure-1-subject-address-page.png)
+
+*Figure 1: Subject Bitcoin address page (Blockchair).*
+
 ## 5. Glossary
 
 | Term | Explanation | Source |
@@ -67,6 +71,10 @@ I verified the subject address using a blockchain explorer (see Figure 1).
 | Fee | See Blockchair screenshot |
 
 The transaction details are shown in Blockchair (see Figure 2).
+
+![Figure 2: 7 June 2021 transaction record on Blockchair](images/figure-2-june-7-transaction.png)
+
+*Figure 2: Blockchair record of the 7 June 2021 transaction.*
 
 **Observation:** the transaction shows both outgoing and incoming funds, indicating internal redistribution or controlled movement.
 
@@ -116,5 +124,9 @@ I found that public blockchain data provides a useful way to trace cryptocurrenc
 - Figure 1: Subject Bitcoin Address Page (Blockchair)
 - Figure 2: 7 June 2021 Transaction Analysis
 - Figure 3: 28 May 2021 Incoming Transaction
+
+![Figure 3: 28 May 2021 incoming transaction record on Blockchair](images/figure-3-may-28-incoming-transaction.png)
+
+*Figure 3: Blockchair record of the 28 May 2021 incoming transaction.*
 
 *Accessed on: 6 May 2026*
