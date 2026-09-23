@@ -38,6 +38,10 @@ The Ronin Bridge exploit occurred on 23 March 2022 and was discovered on 29 Marc
 
 I verified the address and its public label on Etherscan (see Figure 1).
 
+![Figure 1: Etherscan address page for the Ronin Bridge Exploiter address](images/figure-1-etherscan-address-page.png)
+
+*Figure 1: Etherscan address page, showing the "Ronin Bridge Exploiter," "Exploit," and "OFAC-Sanctioned" labels.*
+
 ## 6. Why Current Balance Is Not Reliable
 
 The current balance of an Ethereum address can change over time due to subsequent transactions. It therefore does not represent the original stolen amount. For an investigation, historical transaction data is more useful than the current balance alone.
@@ -60,6 +64,10 @@ The current balance of an Ethereum address can change over time due to subsequen
 
 The internal transfer of 173,600 ETH is visible on Etherscan (see Figure 2).
 
+![Figure 2: Etherscan record of the 173,600 ETH internal transfer](images/figure-2-eth-transaction.png)
+
+*Figure 2: Etherscan transaction record showing the internal transfer of 173,600 ETH from the Ronin Bridge to the Exploiter address.*
+
 ## 8. USDC Transaction Analysis (25,500,000 USDC)
 
 | Field | Details |
@@ -76,6 +84,10 @@ The internal transfer of 173,600 ETH is visible on Etherscan (see Figure 2).
 
 The ERC-20 transfer of 25,500,000 USDC is shown in the token transfer data (see Figure 3).
 
+![Figure 3: Etherscan record of the 25,500,000 USDC transfer](images/figure-3-usdc-transaction.png)
+
+*Figure 3: Etherscan transaction record showing the ERC-20 transfer of 25,500,000 USDC from the Ronin Bridge to the Exploiter address.*
+
 ## 9. ETH vs. USDC
 
 The ETH transaction shows asset movement through internal transactions, while the USDC transfer appears under ERC-20 token transfers. Both transactions show 0 ETH in the top-level value field. This demonstrates why blockchain investigations require examination of contract calls, internal transactions, and token transfers rather than relying on a single transaction field.
@@ -91,6 +103,10 @@ The ETH transaction shows asset movement through internal transactions, while th
 | Date | 22 April 2022 |
 
 The address is listed under sanctions (see Figure 4).
+
+![Figure 4: OFAC SDN List entry naming the Lazarus Group and this address](images/figure-4-ofac-sdn-listing.png)
+
+*Figure 4: OFAC Specially Designated Nationals (SDN) List entry for the Lazarus Group, listing the Ronin Bridge Exploiter address among its associated digital currency addresses.*
 
 ## 11. Tornado Cash
 
@@ -139,5 +155,10 @@ Compromised Validators → Forged Approval → Ronin Bridge → 25.5M USDC → E
 I found that the Ronin Bridge case is a good example of why blockchain investigations require more than basic wallet balances and transaction values. Public blockchain data shows the relevant asset movements, while OFAC and the Ronin postmortem provide additional attribution and incident context. At the same time, blockchain evidence alone cannot independently establish a real-world identity.
 
 ## 17. Screenshots
+
+- Figure 1: Etherscan Address Page (Ronin Bridge Exploiter)
+- Figure 2: ETH Internal Transfer Transaction
+- Figure 3: USDC Transfer Transaction
+- Figure 4: OFAC SDN List Entry
 
 *All screenshots were accessed on 6 May 2026 (UTC).*
